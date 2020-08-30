@@ -1,22 +1,10 @@
-import React, { useState } from 'react'
-import data from './data.json'
+import React, { useState, useEffect } from 'react'
+import myPokemons from './myPokemons.json'
+import Home from './Home'
 
 const App = () => {
-    const [list, setList] = useState([])
-    const handleClick = () => {
-        setList(data.loaders)
-    }
     return (
-        <div>
-            <h1>Billie Eilish</h1>
-            <ul>
-                {list.map(loader => (
-                    <li key={loader.id}>{loader.name}</li>
-                ))}
-            </ul>
-
-            <button onClick={handleClick}>Show Loaders</button>
-        </div>
+        <Home />
     )
 }
 
