@@ -6,7 +6,7 @@ const Pokemon = (props) => {
     return (
         <div className='pokemon'>
             <div className="pokemon__img">
-                <img src="" alt={name}/>
+                <img src={`https://pokeres.bastionbot.org/images/pokemon/${props.id}.png`} alt={name}/>
             </div>
             <h4>{nameUpper}</h4>
             {/* <p>{`Height: ${height / 10} m`}</p>

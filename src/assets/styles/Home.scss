@@ -1,17 +1,18 @@
 .pokedex {
-    padding: 15px;
+    width: 90%;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
     gap: 1rem;
     @media (min-width: 768px) {
-        grid-template-columns: repeat(3, 250px);
+        grid-template-columns: repeat(3, 1fr);
     }
     @media (min-width: 1080px) {
-        grid-template-columns: repeat(4, 270px);
+        grid-template-columns: repeat(4, 1fr);
     }
     @media (min-width: 1440px) {
         grid-template-columns: repeat(4, 300px);
+        justify-content: center;
     }
-    
+
 }
