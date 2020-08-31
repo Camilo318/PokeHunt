@@ -14,3 +14,24 @@
         grid-template-rows: repeat(6, auto);
     }
 }
+
+.pagination {
+    text-align: center;
+    padding: 30px;
+    button {
+        font-family: 'Rubik';
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        margin: 10px;
+        &:hover {
+            background-color: #393b44;
+            color: #ffffff;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+}
