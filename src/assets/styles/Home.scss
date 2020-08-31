@@ -2,12 +2,15 @@
     width: 90%;
     margin: 30px auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(18, auto);
     @media (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(9, auto);
     }
     @media (min-width: 1080px) {
         grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(6, auto);
     }
 }

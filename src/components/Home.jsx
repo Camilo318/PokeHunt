@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Pokemon from './Pokemon'
+import Aside from './Aside'
 
 const Home = () => {
     const [pokedex, setPokedex] = useState([])
-    const [currentPage, setCurrentPage] = useState('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=15')
+    const [currentPage, setCurrentPage] = useState('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=18')
     const [prevPage, setPrevPage] = useState('')
     const [nextPage, setNextPage] = useState('')
     const [isLoading, setIsLoading] = useState(true)
@@ -35,6 +36,7 @@ const Home = () => {
             {isLoading ? 'Loading...' :
             
             <section className='pokedex'>
+                <Aside />
                 {pokedex.map(pokemon => {
                     return (
                         <Pokemon key={pokemon.id} {...pokemon} />
