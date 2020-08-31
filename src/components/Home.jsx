@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Pokemon from './Pokemon'
 
 const Home = () => {
     const [pokedex, setPokedex] = useState([])
@@ -36,9 +37,7 @@ const Home = () => {
             <section className='pokedex'>
                 {pokedex.map(pokemon => {
                     return (
-                        <h3 key={pokemon.id}>
-                            {pokemon.name}
-                        </h3>
+                        <Pokemon key={pokemon.id} {...pokemon} />
                     )
                 })}
             </section>

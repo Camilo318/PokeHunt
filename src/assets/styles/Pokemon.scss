@@ -1,0 +1,16 @@
+.pokemon {
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba($color: #000000, $alpha: 0.4);
+    padding: 10px;
+    text-align: center;
+    .pokemon__img {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    h4 {
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+}
