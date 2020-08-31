@@ -1,10 +1,6 @@
 body {
-    font-family: system-ui;
+    font-family: 'Rubik';
+    margin: 0;
 }
-h1 {
-    color: teal;
-}
-.your-name img {
-    max-width: 100%;
-    height: auto;
-}
+
+@import './Header.scss'
