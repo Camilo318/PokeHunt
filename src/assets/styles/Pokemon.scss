@@ -3,14 +3,21 @@
     padding: 10px;
     text-align: center;
     background-color: #fff;
+    transition: all 0.3s;
     .pokemon__img {
+        border-radius: inherit;
         img {
             width: 100%;
             height: auto;
+            border-radius: inherit;
+            cursor: pointer;
         }
     }
     h4 {
         margin: 0.5rem 0;
         text-align: center;
+    }
+    &:hover {
+        transform: translateY(-12px);
     }
 }

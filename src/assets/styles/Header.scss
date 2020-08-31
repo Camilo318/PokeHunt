@@ -4,12 +4,13 @@
 }
 .header__container {
     position: fixed;
-    background-color: #fff;
     top: 0;
     left: 0;
+    z-index: 1;
     width: 100%;
-    line-height: 9vh;
     padding: 0 15px;
+    line-height: 9vh;
+    background-color: #fff;
     @media (min-width: 768px) {
         padding: 0 30px;
     }
