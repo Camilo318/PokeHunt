@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import Colors from '../colors.json'
 const PokemonDetail = ({match}) => {
     const { id } = match.params
     const [info, setInfo] = useState({})
@@ -22,26 +22,30 @@ const PokemonDetail = ({match}) => {
     const getTypes = (x) => {
         return x && x.map(type => `#${type.type.name}`).join(' ')
     }
+    const colorType = info.types && info.types[0].type.name
     return (
-        <div className='pokemon-detail'>
-            <div className="pokemon-detail__image">
-                <img src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt=""/>
-            </div>
+        <div className="pokemon-container">
+            <div className='pokemon-detail'>
+                <div className="pokemon-detail__image"
+                style={{backgroundColor: Colors[colorType]}}>
+                    <img src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt=""/>
+                </div>
 
-            <div className="pokemon-detail__info">
-                <h3>{capitalize(name)} {id.padStart(3,0)}</h3>
-                <p>Height: {height/10}m</p>
-                <p>Weight: {weight/10}kg</p>
-                <p>Base Experience: {info.base_experience}</p>
-                {info.abilities &&
-                <p>Abilities: {info.abilities.map((a,i) => {
-                    return (
-                        <span key={i}>
-                            {capitalize(a.ability.name)}
-                        </span>
-                    )
-                })}</p>}
-                <p>Types: {getTypes(info.types)}</p>
+                <div className="pokemon-detail__info">
+                    <h3>{capitalize(name)} {id.padStart(3,0)}</h3>
+                    <p>Height: {height/10}m</p>
+                    <p>Weight: {weight/10}kg</p>
+                    <p>Base Experience: {info.base_experience}</p>
+                    {info.abilities &&
+                    <p>Abilities: {info.abilities.map((a,i) => {
+                        return (
+                            <span key={i}>
+                                {capitalize(a.ability.name)}
+                            </span>
+                        )
+                    })}</p>}
+                    <p>Types: {getTypes(info.types)}</p>
+                </div>
             </div>
         </div>
     )

@@ -1,6 +1,10 @@
 .aside {
+    display: none;
     grid-column: -2 / -1;
     grid-row: 1 / -1;
     height: 100%;
     // position: fixed;
+    @media (min-width: 540px) {
+        display: block;
+    }
 }
