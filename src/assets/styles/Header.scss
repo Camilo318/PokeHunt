@@ -14,8 +14,13 @@
     @media (min-width: 768px) {
         padding: 0 30px;
     }
-    h2 {
-        font-weight: 500;
-        margin: 0;
+    a {
+        color: black;
+        text-decoration: none;
+        h2 {
+            font-weight: 500;
+            margin: 0;
+        }
+    
     }
 }
