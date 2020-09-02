@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Colors from '../colors.json'
-const PokemonDetail = ({match}) => {
+const PokemonDetail = ({match, history}) => {
     const { id } = match.params
     const [info, setInfo] = useState({})
 
@@ -45,6 +45,9 @@ const PokemonDetail = ({match}) => {
                         )
                     })}</p>}
                     <p>Types: {getTypes(info.types)}</p>
+                    <button onClick={() => history.goBack()}>
+                        Go back
+                    </button>
                 </div>
             </div>
         </div>
