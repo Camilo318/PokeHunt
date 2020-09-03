@@ -10,9 +10,6 @@ const reducer = (state, action) => {
                 ...state,
                 myPokemons: state.myPokemons.filter(pokemon => pokemon.name !== action.payload)
             }
-        
-        
-        
         default:
             return state
 

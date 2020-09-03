@@ -1,5 +1,5 @@
 export function addPokemon(payload) {
-    return {
+    return { //action
         type: 'pokemon/addPokemon',
         payload
     }

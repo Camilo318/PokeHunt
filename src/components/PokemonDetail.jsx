@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Colors from '../colors.json'
-const PokemonDetail = ({match, history}) => {
+import { connect } from 'react-redux'
+import {addPokemon} from '../actions/index'
+
+const PokemonDetail = ({match, history, addPokemon}) => {
     const { id } = match.params
     const [info, setInfo] = useState({})
 
@@ -48,10 +51,17 @@ const PokemonDetail = ({match, history}) => {
                     <button onClick={() => history.goBack()}>
                         Go back
                     </button>
+                    <button onClick={() => addPokemon(info)}>
+                        Add Pokemon
+                    </button>
                 </div>
             </div>
         </div>
     )
 }
 
-export default PokemonDetail
+
+const mapDispatchToProps = {
+    addPokemon
+}
+export default connect(null, mapDispatchToProps) (PokemonDetail)
