@@ -16,7 +16,7 @@
 
         
         &__pokemon {
-            
+            position: relative;
             border-radius: 5px;
             margin: 4px;
             width: calc(25% - 8px);
@@ -24,7 +24,33 @@
             animation-name: fadeIn;
             animation-duration: 0.6s;
             img {
+                display: block;
                 width: 100%;
+            }
+            &:hover .remove {
+                opacity: 1;
+                transform: scale(1);
+            }
+            .remove {
+                position: absolute;
+                top: 3px;
+                right: 3px;
+                color: white;
+                font-size: 0.5rem;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                cursor: pointer;
+                text-align: center;
+                line-height: 15px;
+                background-color: rgba($color: #000000, $alpha: 0.4);
+                opacity: 0;
+                transform: scale(0);
+                transform-origin: center;
+                transition: all 0.5s;
+                &:hover {
+                    background-color: rgba($color: #ff4b5c, $alpha:0.8);
+                }
             }
         }
     }

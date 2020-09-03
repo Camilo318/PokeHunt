@@ -16,6 +16,7 @@ const Aside = ({myPokemons}) => {
                                 <CapturedPokemon key={pokemon.name}
                                 id={pokemon.id}
                                 media={pokemon.sprites.front_default}
+                                name={pokemon.name}
                                 types={pokemon.types}
                                 />
                             ))}
