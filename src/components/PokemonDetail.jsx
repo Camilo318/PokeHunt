@@ -18,7 +18,7 @@ const PokemonDetail = (props) => {
 
         }
         getPokemonInfo()
-    }, [])
+    }, [id])
     
     const { name, height, weight} = info
     const capitalize = (x) => {

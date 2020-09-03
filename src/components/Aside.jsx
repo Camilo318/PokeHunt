@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import CapturedPokemon from './CapturedPokemon'
 
 const Aside = ({myPokemons}) => {
     return (
@@ -10,11 +11,13 @@ const Aside = ({myPokemons}) => {
             <div className="vault">
                 {
                     myPokemons.length > 0 && (
-                        <div>
+                        <>
                             {myPokemons.map(pokemon => (
-                                <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
+                                <CapturedPokemon key={pokemon.name}
+                                id={pokemon.id}
+                                media={pokemon.sprites.front_default}/>
                             ))}
-                        </div>
+                        </>
                     )
                 }
             </div>
