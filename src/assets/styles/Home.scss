@@ -3,8 +3,11 @@
     margin: 20px auto;
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(18, auto);
+    grid-template-columns: 1fr;
+    @media (min-width: 540px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(18, auto);
+    }
     @media (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(9, auto);
