@@ -4,6 +4,8 @@
     grid-row: 1 / -1;
     height: 100%;
     padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
     // position: fixed;
     @media (min-width: 540px) {
         display: block;
@@ -13,19 +15,29 @@
         margin-bottom: 0;
     }
     .search {
+        position: relative;
         input {
             width: 100%;
             line-height: 2rem;
-            padding: 0 0.75rem;
-            border: 1px solid #899bb4;
+            padding: 0.25rem 0.75rem;
+            border: 2px solid #899bb4;
             border-radius: 5px;
             background-color: transparent;
             font-family: 'Rubik';
-            font-size: 0.874rem;
+            font-size: 1rem;
+            font-weight: 400;
             &:focus {
                 outline: none;
                 background-color: #fff;
+                border-color: #a2d5f2;
             }
+        }
+        img {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 17px;
         }
     }
     .vault {

@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CapturedPokemon from './CapturedPokemon'
-
+import search from '../assets/images/icon-search.png'
 const Aside = ({myPokemons}) => {
     return (
         <div className='aside'>
             <div className="search">
                 <input type="text" placeholder='Search Pokemon'/>
+                <img src={search} alt=""/>
             </div>
             <h3>My Pokemons</h3>
             <div className="vault">
