@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Colors from '../colors.json'
 import { connect } from 'react-redux'
 import {addPokemon, deletePokemon} from '../actions/index'
+import Aside from './Aside'
 
 const PokemonDetail = (props) => {
     const {addPokemon, deletePokemon, history, match} = props
@@ -60,6 +61,7 @@ const PokemonDetail = (props) => {
                     </button>
                 </div>
             </div>
+            <Aside />
         </div>
     )
 }
