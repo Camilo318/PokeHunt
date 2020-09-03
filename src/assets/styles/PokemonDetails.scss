@@ -18,6 +18,7 @@
     grid-template-columns: 1fr;
     @media (min-width: 540px) {
         grid-template-columns: minmax(150px, 40%) 1fr;
+        gap: 0.75rem;
     }
     
     &__image {
@@ -46,6 +47,22 @@
             padding: 0.5rem 0;
             border-radius: 5px;
             margin: 0;
+        }
+        button {
+            font-family: 'Rubik';
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            margin: 10px;
+            &:hover {
+                background-color: #393b44;
+                color: #ffffff;
+            }
+            &:focus {
+                outline: none;
+            }
         }
     }
 }

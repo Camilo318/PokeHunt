@@ -3,7 +3,8 @@ import Colors from '../colors.json'
 import { connect } from 'react-redux'
 import {addPokemon, deletePokemon} from '../actions/index'
 
-const PokemonDetail = ({match, history, addPokemon, deletePokemon}) => {
+const PokemonDetail = (props) => {
+    const {addPokemon, deletePokemon, history, match} = props
     const { id } = match.params
     const [info, setInfo] = useState({})
 
