@@ -7,12 +7,24 @@
     @media (min-width: 540px) {
         display: block;
     }
+    padding: 10px;
 
     .vault {
-        div {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+
+        
+        &__pokemon {
+            
+            border-radius: 5px;
+            margin: 4px;
+            width: calc(25% - 8px);
+            height: auto;
+            animation-name: fadeIn;
+            animation-duration: 0.6s;
             img {
-                animation-name: fadeIn;
-                animation-duration: 0.6s;
+                width: 100%;
             }
         }
     }
