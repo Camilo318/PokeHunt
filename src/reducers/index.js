@@ -1,7 +1,9 @@
 const reducer = (state, action) => {
     switch (action.type) {
         case 'pokemon/addPokemon':
-            return {
+            const duplicate = state.myPokemons.find(pokemon => pokemon.name === action.payload.name)
+            return duplicate ? state :
+            {
                 ...state,
                 myPokemons: [...state.myPokemons, action.payload]
             }

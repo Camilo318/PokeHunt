@@ -4,3 +4,10 @@ export function addPokemon(payload) {
         payload
     }
 }
+
+export function deletePokemon(payload) {
+    return {
+        type: 'pokemon/deletePokemon',
+        payload
+    }
+}

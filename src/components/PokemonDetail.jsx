@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Colors from '../colors.json'
 import { connect } from 'react-redux'
-import {addPokemon} from '../actions/index'
+import {addPokemon, deletePokemon} from '../actions/index'
 
-const PokemonDetail = ({match, history, addPokemon}) => {
+const PokemonDetail = ({match, history, addPokemon, deletePokemon}) => {
     const { id } = match.params
     const [info, setInfo] = useState({})
 
@@ -54,6 +54,9 @@ const PokemonDetail = ({match, history, addPokemon}) => {
                     <button onClick={() => addPokemon(info)}>
                         Add Pokemon
                     </button>
+                    <button onClick={() => deletePokemon(info.name)}>
+                        Delete Pokemon
+                    </button>
                 </div>
             </div>
         </div>
@@ -62,6 +65,7 @@ const PokemonDetail = ({match, history, addPokemon}) => {
 
 
 const mapDispatchToProps = {
-    addPokemon
+    addPokemon,
+    deletePokemon
 }
 export default connect(null, mapDispatchToProps) (PokemonDetail)
