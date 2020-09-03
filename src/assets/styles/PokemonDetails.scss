@@ -56,9 +56,16 @@
             padding: 0.5rem 0.75rem;
             font-size: 1rem;
             margin: 10px;
+            
             &:hover {
                 background-color: #393b44;
                 color: #ffffff;
+            }
+            &.add:hover {
+                background-color: #056674;
+            }
+            &.delete:hover {
+                background-color: #ff4b5c;
             }
             &:focus {
                 outline: none;

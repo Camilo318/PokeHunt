@@ -3,14 +3,33 @@
     grid-column: -2 / -1;
     grid-row: 1 / -1;
     height: 100%;
+    padding: 10px;
     // position: fixed;
     @media (min-width: 540px) {
         display: block;
     }
-    padding: 10px;
-
+    h3 {
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+    .search {
+        input {
+            width: 100%;
+            line-height: 2rem;
+            padding: 0 0.75rem;
+            border: 1px solid #899bb4;
+            border-radius: 5px;
+            background-color: transparent;
+            font-family: 'Rubik';
+            font-size: 0.874rem;
+            &:focus {
+                outline: none;
+                background-color: #fff;
+            }
+        }
+    }
     .vault {
-        margin-top: 20px;
+        margin-top: 10px;
         display: flex;
         flex-wrap: wrap;
 
@@ -33,8 +52,8 @@
             }
             .remove {
                 position: absolute;
-                top: 3px;
-                right: 3px;
+                top: 2px;
+                right: 2px;
                 color: white;
                 font-size: 0.5rem;
                 width: 15px;

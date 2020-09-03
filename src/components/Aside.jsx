@@ -8,6 +8,7 @@ const Aside = ({myPokemons}) => {
             <div className="search">
                 <input type="text" placeholder='Search Pokemon'/>
             </div>
+            <h3>My Pokemons</h3>
             <div className="vault">
                 {
                     myPokemons.length > 0 && (

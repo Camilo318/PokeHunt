@@ -50,14 +50,16 @@ const PokemonDetail = (props) => {
                         )
                     })}</p>}
                     <p>Types: {getTypes(info.types)}</p>
-                    <button onClick={() => history.goBack()}>
-                        Go back
-                    </button>
-                    <button onClick={() => addPokemon(info)}>
+                    
+                    <button onClick={() => addPokemon(info)} className='add'>
                         Add Pokemon
                     </button>
-                    <button onClick={() => deletePokemon(info.name)}>
+                    <button onClick={() => deletePokemon(info.name)}className='delete'>
                         Delete Pokemon
+                    </button>
+                    <button onClick={() => history.goBack()}
+                    className='back'>
+                        Go back
                     </button>
                 </div>
             </div>
