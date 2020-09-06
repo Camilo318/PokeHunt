@@ -5,7 +5,8 @@ import {addPokemon, deletePokemon} from '../actions/index'
 import Aside from './Aside'
 
 const PokemonDetail = (props) => {
-    const {addPokemon, deletePokemon, history, match} = props
+    const {addPokemon, deletePokemon, history, match,} = props
+    const { myPokemons } = props
     const { id } = match.params
     const [info, setInfo] = useState({})
 
@@ -15,19 +16,18 @@ const PokemonDetail = (props) => {
             const data = await res.json()
             console.log(data)
             setInfo(data)
-
         }
         getPokemonInfo()
     }, [id])
     
-    const { name, height, weight} = info
+    const { name, height, weight, types} = info
     const capitalize = (x) => {
         return x && x[0].toUpperCase() + x.slice(1)
     }
-    const getTypes = (x) => {
-        return x && x.map(type => `#${type.type.name}`).join(' ')
-    }
+    
     const colorType = info.types && info.types[0].type.name
+
+    const duplicate = myPokemons.find(pokemon => pokemon.name === name)
     return (
         <div className="pokemon-container">
             <div className='pokemon-detail'>
@@ -41,22 +41,28 @@ const PokemonDetail = (props) => {
                     <p>Height: {height/10}m</p>
                     <p>Weight: {weight/10}kg</p>
                     <p>Base Experience: {info.base_experience}</p>
-                    {info.abilities &&
-                    <p>Abilities: {info.abilities.map((a,i) => {
-                        return (
-                            <span key={i}>
-                                {capitalize(a.ability.name)}
-                            </span>
-                        )
-                    })}</p>}
-                    <p>Types: {getTypes(info.types)}</p>
+
+
+                    <p className='types'>Types:
+                        {types && types.map(type => (
+                        <span key={type.type.name}
+                        style={{backgroundColor: Colors[type.type.name]}}>
+                            {`#${type.type.name}`}
+                        </span>
+                        ))}
+                    </p>
                     
-                    <button onClick={() => addPokemon(info)} className='add'>
-                        Add Pokemon
-                    </button>
-                    <button onClick={() => deletePokemon(info.name)}className='delete'>
+                    {   duplicate ?
+                        <button onClick={() => deletePokemon(info.name)}className='delete'>
                         Delete Pokemon
-                    </button>
+                        </button>
+                        :
+                        <button onClick={() => addPokemon(info)} className='add'>
+                        Add Pokemon
+                        </button>
+                    }
+
+
                     <button onClick={() => history.goBack()}
                     className='back'>
                         Go back
@@ -73,4 +79,10 @@ const mapDispatchToProps = {
     addPokemon,
     deletePokemon
 }
-export default connect(null, mapDispatchToProps) (PokemonDetail)
+
+const mapStateToProps = state => {
+    return {
+        myPokemons: state.myPokemons
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps) (PokemonDetail)

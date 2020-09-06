@@ -48,6 +48,15 @@
             border-radius: 5px;
             margin: 0;
         }
+
+        p.types {
+            span {
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.875rem;
+                margin: 0 0.5rem;
+                cursor: pointer;
+            }
+        }
         button {
             font-family: 'Rubik';
             border-radius: 5px;
