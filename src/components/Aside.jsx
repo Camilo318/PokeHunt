@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import CapturedPokemon from './CapturedPokemon'
 import search from '../assets/images/icon-search.png'
 const Aside = ({myPokemons, showAside}) => {
-    return showAside && (
-        <div className='aside'>
+    return  (
+        <div className={`aside ${showAside ? 'showHide' : ''}`}>
             <div className="aside__container">
                 
                 <div className="search">

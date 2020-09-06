@@ -1,5 +1,5 @@
 .aside {
-    
+    display: none;
     grid-column: -2 / -1;
     grid-row: 1 / auto;
     padding: 10px;
@@ -10,10 +10,14 @@
     z-index: 1;
     top: calc(9vh + 10px);
     @media (min-width: 540px) {
+        display: block;
         grid-row: 1 / -1;
         position: relative;
         width: 100%;  //fill the column
         top: unset;
+    }
+    &.showHide {
+        display: block;
     }
     
     &__container {
