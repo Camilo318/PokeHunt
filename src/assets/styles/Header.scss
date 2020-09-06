@@ -12,6 +12,8 @@
     padding: 0 15px;
     line-height: 9vh;
     background-color: #fff;
+    display: flex;
+    justify-content: space-between;
     @media (min-width: 768px) {
         padding: 0 30px;
     }
@@ -22,6 +24,13 @@
             font-weight: 500;
             margin: 0;
         }
-    
+    }
+    span {
+        font-size: 1.5rem;
+        color: #becfdf;
+        cursor: pointer;
+        &:hover {
+            color: #393b44;
+        }
     }
 }

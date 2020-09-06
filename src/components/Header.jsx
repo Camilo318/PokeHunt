@@ -8,6 +8,7 @@ const Header = () => {
                 <Link to='/'>
                     <h2>Poke Hunt</h2>
                 </Link>
+                <span>•••</span>
             </div>
         </header>
     )
