@@ -6,9 +6,12 @@
     background-color: #fff;
     border-radius: 10px;
     position: fixed;
+    top: calc(9vh + 10px);
     width: 90%;
     z-index: 1;
-    top: calc(9vh + 10px);
+    animation-name: fadeIn;
+    animation-duration: 0.6s;
+    transform-origin: left top;
     @media (min-width: 540px) {
         display: block;
         grid-row: 1 / -1;
@@ -86,12 +89,13 @@
                 right: 2px;
                 color: white;
                 font-size: 0.5rem;
-                width: 15px;
-                height: 15px;
+                width: 25%;
+                height: 25%;
                 border-radius: 50%;
                 cursor: pointer;
-                text-align: center;
-                line-height: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 background-color: rgba($color: #000000, $alpha: 0.4);
                 opacity: 0;
                 transform: scale(0);
