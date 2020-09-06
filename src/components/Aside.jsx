@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import CapturedPokemon from './CapturedPokemon'
 import search from '../assets/images/icon-search.png'
-const Aside = ({myPokemons}) => {
-    return (
+const Aside = ({myPokemons, showAside}) => {
+    return showAside && (
         <div className='aside'>
             <div className="aside__container">
                 
@@ -11,6 +11,7 @@ const Aside = ({myPokemons}) => {
                     <input type="text" placeholder='Search Pokemon'/>
                     <img src={search} alt=""/>
                 </div>
+
                 <h3>My Pokemons</h3>
                 <div className="vault">
                     {
@@ -23,7 +24,7 @@ const Aside = ({myPokemons}) => {
                                     name={pokemon.name}
                                     types={pokemon.types}
                                     />
-                                    ))}
+                                ))}
                             </>
                         )
                     }
@@ -35,7 +36,8 @@ const Aside = ({myPokemons}) => {
 
 const mapStateToProps = state => {
     return {
-        myPokemons: state.myPokemons
+        myPokemons: state.myPokemons,
+        showAside: state.showAside
     }
 }
 

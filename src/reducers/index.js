@@ -12,6 +12,12 @@ const reducer = (state, action) => {
                 ...state,
                 myPokemons: state.myPokemons.filter(pokemon => pokemon.name !== action.payload)
             }
+        case 'aside/toggleAside':
+            return {
+                ...state,
+                showAside: !state.showAside
+
+            }
         default:
             return state
 

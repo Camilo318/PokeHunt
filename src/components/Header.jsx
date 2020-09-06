@@ -1,17 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { toggleAside } from '../actions/index'
 
-const Header = () => {
+const Header = ({toggleAside}) => {
     return (
         <header className='header'>
             <div className="header__container">
                 <Link to='/'>
                     <h2>Poke Hunt</h2>
                 </Link>
-                <span>•••</span>
+                <span onClick={() => toggleAside()}>
+                    •••
+                </span>
             </div>
         </header>
     )
 }
 
-export default Header
+const mapDispatchToProps = {
+    toggleAside
+}
+export default connect(null, mapDispatchToProps)(Header)

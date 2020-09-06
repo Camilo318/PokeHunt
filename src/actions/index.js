@@ -11,3 +11,10 @@ export function deletePokemon(payload) {
         payload
     }
 }
+
+export function toggleAside(payload) {
+    return {
+        type: 'aside/toggleAside',
+        payload
+    }
+}
