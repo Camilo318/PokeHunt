@@ -1,11 +1,25 @@
 .aside {
     grid-column: -2 / -1;
-    grid-row: 1 / -1;
-    height: 100%;
+    grid-row: 1 / auto;
     padding: 10px;
     background-color: #fff;
     border-radius: 10px;
-    // position: fixed;
+    position: fixed;
+    width: 90%;
+    z-index: 1;
+    top: calc(9vh + 10px);
+    @media (min-width: 540px) {
+        grid-row: 1 / -1;
+        position: relative;
+        width: 100%;  //fill the column
+        top: unset;
+    }
+    
+    &__container {
+        position: sticky;
+        top: calc(9vh + 10px);
+        width: 100%;
+    }
     h3 {
         font-weight: 500;
         margin-bottom: 0;
