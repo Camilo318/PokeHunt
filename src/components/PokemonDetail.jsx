@@ -3,6 +3,7 @@ import Colors from '../colors.json'
 import { connect } from 'react-redux'
 import {addPokemon, deletePokemon} from '../actions/index'
 import Aside from './Aside'
+import getData from '../utils/getData'
 
 const PokemonDetail = (props) => {
     const {addPokemon, deletePokemon, history, match,} = props
@@ -11,13 +12,9 @@ const PokemonDetail = (props) => {
     const [info, setInfo] = useState({})
 
     useEffect(() => {
-        const getPokemonInfo = async () => {
-            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-            const data = await res.json()
-            console.log(data)
-            setInfo(data)
-        }
-        getPokemonInfo()
+        getData(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+            .then(data => setInfo(data))
+
     }, [id])
     
     const { name, height, weight, types} = info
@@ -27,7 +24,9 @@ const PokemonDetail = (props) => {
     
     const colorType = info.types && info.types[0].type.name
 
-    const duplicate = myPokemons.find(pokemon => pokemon.name === name)
+    const duplicate = myPokemons.find(pokemon => {
+        return pokemon.name === name
+    })
     return (
         <div className="pokemon-container">
             <div className='pokemon-detail'>
@@ -53,11 +52,13 @@ const PokemonDetail = (props) => {
                     </p>
                     
                     {   duplicate ?
-                        <button onClick={() => deletePokemon(info.name)}className='delete'>
+                        <button
+                        onClick={() => deletePokemon(info.name)}className='delete'>
                         Delete Pokemon
                         </button>
                         :
-                        <button onClick={() => addPokemon(info)} className='add'>
+                        <button
+                        onClick={() => addPokemon(info)} className='add'>
                         Add Pokemon
                         </button>
                     }
