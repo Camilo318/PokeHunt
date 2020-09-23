@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Pokemon from './Pokemon'
 import Aside from './Aside'
 import Loader from '../assets/images/pokemon.svg'
+import getData from '../utils/getData'
+import getPokemons from '../utils/getPokemons'
 
 const Home = () => {
     const [pokedex, setPokedex] = useState([])
@@ -10,25 +12,19 @@ const Home = () => {
     const [nextPage, setNextPage] = useState('')
     const [isLoading, setIsLoading] = useState(true)
 
-
-    const pokemons = [] //Array of promises
     useEffect(() => {
-        const getPokemons = async () => {
-            setIsLoading(true)
-            const res = await fetch(currentPage)
-            const data = await res.json()
-            console.log(data)
+        setIsLoading(true)
+        getData(currentPage).then(data => {
             setPrevPage(data.previous)
             setNextPage(data.next)
-            data.results.forEach(p => {
-                pokemons.push(fetch(p.url).then(resp => resp.json()))
+            getPokemons(data).then(pokemons => {
+                setPokedex(pokemons)
+                setIsLoading(false)
+                console.log(pokemons)
             })
-            const resolvedPokemons = await Promise.all(pokemons)
-            setPokedex(resolvedPokemons)
-            setIsLoading(false)
-        }
+        })
 
-        getPokemons()
+        console.log('Billie')
     }, [currentPage])
 
     return (
