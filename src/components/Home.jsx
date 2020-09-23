@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Pokemon from './Pokemon'
 import Aside from './Aside'
+import Loader from '../assets/images/pokemon.svg'
 
 const Home = () => {
     const [pokedex, setPokedex] = useState([])
@@ -20,8 +21,7 @@ const Home = () => {
             setPrevPage(data.previous)
             setNextPage(data.next)
             data.results.forEach(p => {
-                pokemons.push(fetch(p.url)
-                .then(resp => resp.json()))
+                pokemons.push(fetch(p.url).then(resp => resp.json()))
             })
             const resolvedPokemons = await Promise.all(pokemons)
             setPokedex(resolvedPokemons)
@@ -33,13 +33,14 @@ const Home = () => {
 
     return (
         <>
-            {isLoading ? 'Loading...' :
-            
+            {isLoading ? 
+            <img src={Loader} alt="loader" className='loader'/> 
+            :
             <section className='pokedex'>
                 <Aside />
                 {pokedex.map(pokemon => {
                     return (
-                        <Pokemon key={pokemon.id} {...pokemon} />
+                        <Pokemon key={pokemon.id} {...pokemon}/>
                     )
                 })}
             </section>
