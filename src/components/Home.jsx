@@ -4,17 +4,24 @@ import Aside from './Aside'
 import Loader from '../assets/images/pokemon.svg'
 import getData from '../utils/getData'
 import getPokemons from '../utils/getPokemons'
+import { Link } from 'react-router-dom'
 
-const Home = () => {
+const Home = ({location}) => {
+    const api = 'https://pokeapi.co/api/v2/pokemon'
+    const [options, setOptions] = useState('?offset=0&limit=18')
     const [pokedex, setPokedex] = useState([])
-    const [currentPage, setCurrentPage] = useState('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=18')
     const [prevPage, setPrevPage] = useState('')
     const [nextPage, setNextPage] = useState('')
     const [isLoading, setIsLoading] = useState(true)
+    useEffect(() => {
+        if (location.search) {
+            setOptions(location.search)
+        }
+    }, [location.search])
 
     useEffect(() => {
         setIsLoading(true)
-        getData(currentPage).then(data => {
+        getData(api+options).then(data => {
             setPrevPage(data.previous)
             setNextPage(data.next)
             getPokemons(data).then(pokemons => {
@@ -25,7 +32,7 @@ const Home = () => {
         })
 
         console.log('Billie')
-    }, [currentPage])
+    }, [options])
 
     return (
         <>
@@ -34,25 +41,37 @@ const Home = () => {
             :
             <section className='pokedex'>
                 <Aside />
-                {pokedex.map(pokemon => {
-                    return (
+                {
+                    pokedex.map(pokemon => (
                         <Pokemon key={pokemon.id} {...pokemon}/>
-                    )
-                })}
+                    ))
+                }
             </section>
             }
 
             <section className='pagination'>
                 {
                     prevPage &&
-                    <button onClick={() => setCurrentPage(prevPage)}>
+                    <button>
+                        <Link
+                        to={{
+                            pathname: '/',
+                            search: `?${prevPage.split('?')[1]}`
+                        }}>
                         Prev
+                        </Link>
                     </button>
                 }
                 {
                     nextPage &&
-                    <button onClick={() => setCurrentPage(nextPage)}>
+                    <button>
+                        <Link
+                        to={{
+                            pathname: '/',
+                            search: `?${nextPage.split('?')[1]}`
+                        }}>
                         Next
+                        </Link>
                     </button>
                 }
             </section>

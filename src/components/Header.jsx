@@ -7,7 +7,11 @@ const Header = ({toggleAside}) => {
     return (
         <header className='header'>
             <div className="header__container">
-                <Link to='/'>
+                <Link
+                to={{
+                    pathname: '/',
+                    search: '?offset=0&limit=18'
+                }}>
                     <h2>Poke Hunt</h2>
                 </Link>
                 <span onClick={() => toggleAside()}>
