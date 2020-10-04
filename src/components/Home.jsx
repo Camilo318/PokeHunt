@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import Pokemon from './Pokemon'
 import Aside from './Aside'
 import Loader from '../assets/images/pokemon.svg'
@@ -13,13 +13,13 @@ const Home = ({location}) => {
     const [prevPage, setPrevPage] = useState('')
     const [nextPage, setNextPage] = useState('')
     const [isLoading, setIsLoading] = useState(true)
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (location.search) {
             setOptions(location.search)
         }
     }, [location.search])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setIsLoading(true)
         getData(api+options).then(data => {
             setPrevPage(data.previous)

@@ -13,7 +13,11 @@ const Pokemon = (props) => {
             <div className="pokemon__img"
             style={{backgroundColor: Colors[color] }}>
                 <Link to={`/pokemon/${props.id}`}>
-                    <img src={`https://pokeres.bastionbot.org/images/pokemon/${props.id}.png`} alt={name}/>
+                    <img
+                    src={`https://pokeres.bastionbot.org/images/pokemon/${props.id}.png`}
+                    alt={name}
+                    loading="lazy"
+                    />
                 </Link>
             </div>
             <h4>{nameUpper}</h4>
