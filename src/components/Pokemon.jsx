@@ -17,6 +17,7 @@ const Pokemon = (props) => {
                     src={`https://pokeres.bastionbot.org/images/pokemon/${props.id}.png`}
                     alt={name}
                     loading="lazy"
+                    onLoad={() => console.log('Loading Image')}
                     />
                 </Link>
             </div>

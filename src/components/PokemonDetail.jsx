@@ -32,7 +32,11 @@ const PokemonDetail = (props) => {
             <div className='pokemon-detail'>
                 <div className="pokemon-detail__image"
                 style={{backgroundColor: Colors[colorType]}}>
-                    <img src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt=""/>
+                    <img
+                    src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+                    alt={name}
+                    onLoad={() => console.log('Loading Image')}
+                    />
                 </div>
 
                 <div className="pokemon-detail__info">
