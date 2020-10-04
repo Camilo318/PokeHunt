@@ -2,6 +2,8 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -15,6 +17,9 @@ module.exports = {
             template: './public/index.html',
             favicon: './public/favicon.png',
             inject: true
+        }),
+        new BundleAnalyzerPlugin({
+            generateStatsFile: false
         })
     ],
     devServer: {
