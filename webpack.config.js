@@ -17,9 +17,6 @@ module.exports = {
             template: './public/index.html',
             favicon: './public/favicon.png',
             inject: true
-        }),
-        new BundleAnalyzerPlugin({
-            generateStatsFile: false
         })
     ],
     devServer: {
