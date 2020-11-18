@@ -6,7 +6,6 @@
     background-color: #fff;
     border-radius: 10px;
     position: fixed;
-    top: calc(9vh + 10px);
     width: 90%;
     z-index: 1;
     animation-name: fadeIn;
@@ -17,7 +16,6 @@
         grid-row: 1 / -1;
         position: relative;
         width: 100%;  //fill the column
-        top: unset;
     }
     &.showHide {
         display: block;
