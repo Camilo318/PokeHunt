@@ -4,9 +4,18 @@ import Colors from '../colors.json'
 import { connect } from 'react-redux'
 import {deletePokemon} from '../actions/index'
 import remove from '../assets/images/cancel.png'
+import { useLocalStorage } from '../utils/useLocalStorage'
 
-const CapturedPokemon = ({media, id, types, name, deletePokemon}) => {
+const CapturedPokemon = (props) => {
+    const {media, id, types, name, deletePokemon, myPokemons} = props
     const type = types[0].type.name
+    const [storage, setStorage] = useLocalStorage('pokemons', '')
+
+    const deleteP = payload => {
+        deletePokemon(payload)
+        const pokemons = myPokemons.filter(pokemon => pokemon.name !== payload)
+        setStorage(pokemons)
+    }
     return (
         <div className='vault__pokemon'
         style={{backgroundColor: Colors[type]}}>
@@ -14,7 +23,7 @@ const CapturedPokemon = ({media, id, types, name, deletePokemon}) => {
             <img src={media} alt="" className="vault__image"/>
             </Link>
             <div className="remove"
-            onClick={() => deletePokemon(name)}>
+            onClick={() => deleteP(name)}>
                 <img src={remove} alt="Remove Pokemon"/>
             </div>
         </div>
@@ -24,4 +33,9 @@ const CapturedPokemon = ({media, id, types, name, deletePokemon}) => {
 const mapDispatchToProps = {
     deletePokemon
 }
-export default connect(null, mapDispatchToProps)(CapturedPokemon)
+const mapStateToProps = state => {
+    return {
+        myPokemons: state.myPokemons
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CapturedPokemon)

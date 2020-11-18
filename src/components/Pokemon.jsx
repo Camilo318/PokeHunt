@@ -18,6 +18,7 @@ const Pokemon = (props) => {
                     alt={name}
                     loading="lazy"
                     onLoad={() => console.log('Loading Image')}
+                    
                     />
                 </Link>
             </div>

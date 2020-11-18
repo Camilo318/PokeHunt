@@ -4,12 +4,14 @@ import { connect } from 'react-redux'
 import {addPokemon, deletePokemon} from '../actions/index'
 import Aside from './Aside'
 import getData from '../utils/getData'
+import { useLocalStorage } from '../utils/useLocalStorage'
 
 const PokemonDetail = (props) => {
     const {addPokemon, deletePokemon, history, match,} = props
     const { myPokemons } = props
     const { id } = match.params
     const [info, setInfo] = useState({})
+    const [storage, setStorage] = useLocalStorage('pokemons', '')
 
     useEffect(() => {
         getData(`https://pokeapi.co/api/v2/pokemon/${id}/`)
@@ -27,6 +29,18 @@ const PokemonDetail = (props) => {
     const duplicate = myPokemons.find(pokemon => {
         return pokemon.name === name
     })
+
+    const add = payload => {
+        addPokemon(payload)
+        const pokemons = [...myPokemons, payload]
+        setStorage(pokemons)
+    }
+
+    const deleteP = payload => {
+        deletePokemon(payload)
+        const pokemons = myPokemons.filter(pokemon => pokemon.name !== payload)
+        setStorage(pokemons)
+    }
     return (
         <div className="pokemon-container">
             <div className='pokemon-detail'>
@@ -57,12 +71,12 @@ const PokemonDetail = (props) => {
                     
                     {   duplicate ?
                         <button
-                        onClick={() => deletePokemon(info.name)}className='delete'>
+                        onClick={() => deleteP(info.name)}className='delete'>
                         Delete Pokemon
                         </button>
                         :
                         <button
-                        onClick={() => addPokemon(info)} className='add'>
+                        onClick={() => add(info)} className='add'>
                         Add Pokemon
                         </button>
                     }

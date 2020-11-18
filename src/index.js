@@ -7,8 +7,10 @@ import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux'
 import reducer from './reducers/index.js'
 
+
+const capturedPokemons = JSON.parse(window.localStorage.getItem('pokemons'))
 const initialState = {
-    myPokemons: [],
+    myPokemons: capturedPokemons || [],
     showAside: false
 }
 
