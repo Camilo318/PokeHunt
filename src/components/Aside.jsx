@@ -8,7 +8,8 @@ const Aside = ({myPokemons, showAside}) => {
             <div className="aside__container">
                 
                 <div className="search">
-                    <input type="text" placeholder='Search Pokemon'/>
+                    <input type="text" placeholder='Search Pokemon'
+                    onFocus={() => alert('This feature is coming soon 😉. Searching within 1050 resources can mess things up, so the entire team is carefully making tests to avoid taking a toll on performance')}/>
                     <img src={search} alt=""/>
                 </div>
 
