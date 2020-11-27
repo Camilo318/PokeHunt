@@ -1,11 +1,10 @@
 .pokedex {
     width: 90%;
     margin: 20px auto;
+    margin-bottom: 50px;
     display: grid;
     gap: 0.5rem;
     grid-template-columns: 1fr;
-    height: calc(80vh - 20px);
-    overflow: hidden;
     @media (min-width: 540px) {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(18, auto);
@@ -22,9 +21,17 @@
     }
 }
 
+.scroll {
+    height: calc(80vh - 20px);
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .pagination {
     position: fixed;
-    bottom: 8%;
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;

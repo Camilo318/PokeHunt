@@ -5,9 +5,10 @@ import loader from '../assets/images/pokemon.svg'
 import getData from '../utils/getData'
 import getPokemons from '../utils/getPokemons'
 import ReactPaginate from 'react-paginate'
+import Scroll from './Scroll'
 
 const Home = () => {
-    const api = 'https://pokeapi.co/api/v2/pokemon?limit=841'
+    const api = 'https://pokeapi.co/api/v2/pokemon?limit=843'
     const [pokedex, setPokedex] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(0)
@@ -38,14 +39,16 @@ const Home = () => {
             { isLoading ? 
             <img src={loader} alt="loader" className='loader'/> 
             :
-            <section className='pokedex'>
-                <Aside />
-                { current.map(pokemon => (
-                    <Pokemon key={pokemon.id} {...pokemon}/>
-                )) }
-            </section> }
+            (<Scroll>
+                <section className='pokedex'>
+                    <Aside />
+                    { current.map(pokemon => (
+                        <Pokemon key={pokemon.id} {...pokemon}/>
+                    )) }
+                </section>
+            </Scroll>) }
 
-            <section className='pagination'>
+            { !isLoading && <section className='pagination'>
                 <ReactPaginate 
                 previousLabel={'prev'}
                 nextLabel={'next'}
@@ -60,9 +63,8 @@ const Home = () => {
                 pageLinkClassName={'link'}
                 nextLinkClassName={'link'}
                 previousLinkClassName={'link'}
-                activeLinkClassName={'active'}
-                />
-            </section>
+                activeLinkClassName={'active'}/>
+            </section> }
         </>
     )
 }

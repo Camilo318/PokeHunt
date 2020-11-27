@@ -1,7 +1,7 @@
 import React, { useState }from 'react'
 import { Link } from 'react-router-dom'
-import Colors from '../colors.json'
-import Loader from '../assets/images/pokemon.svg'
+import colors from '../colors.json'
+import loader from '../assets/images/pokemon.svg'
 
 
 const Pokemon = (props) => {
@@ -13,8 +13,8 @@ const Pokemon = (props) => {
     return (
         <div className='pokemon'>
             <div className="pokemon__img"
-            style={{backgroundColor: Colors[color] }}>
-                <img src={Loader} alt="loader" className='loader'
+            style={{backgroundColor: colors[color] }}>
+                <img src={loader} alt="loader" className='loader'
                 style={{display: didLoad ? 'none' : 'block'}}/> 
                 <Link to={`/pokemon/${props.id}`}>
                     <img
