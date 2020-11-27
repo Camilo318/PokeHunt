@@ -58,8 +58,9 @@ const Home = () => {
                 previousClassName={'page'}
                 nextClassName={'page'}
                 pageLinkClassName={'link'}
+                nextLinkClassName={'link'}
+                previousLinkClassName={'link'}
                 activeLinkClassName={'active'}
-
                 />
             </section>
         </>

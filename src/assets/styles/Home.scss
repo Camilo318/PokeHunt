@@ -32,6 +32,7 @@
     background-color: #fafafa;
     border-radius: 5px;
     overflow: auto;
+    padding: 0 1rem;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -39,35 +40,32 @@
         list-style: none;
         display: flex;
         padding: 0;
-        margin: 0.5rem;
+        margin: 0;
         align-items: center;
     }
 }
 
 .page {
+    flex: 1;
     padding: 1rem;
     cursor: pointer;
-    a {
-        color: #00343d;
-        font-weight: 500;
-        padding: 0.5rem;
-        display: block;
-        border-radius: 5px;
-        &:hover {
-            background-color: #0bd8a2;
-        }
-        &.active {
-            background-color: #dafff5;
-        }
-    }
 }
 
 .link {
-    color: #16697a;
+    color: #00343d;
     font-weight: 500;
     padding: 0.5rem;
-    border-radius: 2px;
+    display: block;
+    border-radius: 5px;
+    text-align: center;
+    &:hover {
+        background-color: #0bd8a2;
+    }
+    &:focus {
+        outline: none;
+    }
 }
-.link:focus {
-    outline: none;
+
+.active {
+    background-color: #dafff3;
 }
