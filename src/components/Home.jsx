@@ -1,79 +1,61 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Pokemon from './Pokemon'
 import Aside from './Aside'
-import Loader from '../assets/images/pokemon.svg'
+import loader from '../assets/images/pokemon.svg'
 import getData from '../utils/getData'
 import getPokemons from '../utils/getPokemons'
-import { Link } from 'react-router-dom'
+import ReactPaginate from 'react-paginate'
 
-const Home = ({location}) => {
-    const api = 'https://pokeapi.co/api/v2/pokemon'
-    const [options, setOptions] = useState('?offset=0&limit=18')
+const Home = () => {
+    const api = 'https://pokeapi.co/api/v2/pokemon?limit=100'
     const [pokedex, setPokedex] = useState([])
-    const [prevPage, setPrevPage] = useState('')
-    const [nextPage, setNextPage] = useState('')
     const [isLoading, setIsLoading] = useState(true)
-    useLayoutEffect(() => {
-        if (location.search) {
-            setOptions(location.search)
-        }
-    }, [location.search])
+    const [currentPage, setCurrentPage] = useState(0)
+    const [perPage] = useState(18)
+    
 
-    useLayoutEffect(() => {
-        setIsLoading(true)
-        getData(api+options).then(data => {
-            setPrevPage(data.previous)
-            setNextPage(data.next)
+    useEffect(() => {
+        getData(api).then(data => {
             getPokemons(data).then(pokemons => {
-                setPokedex(pokemons)
-                setIsLoading(false)
-                console.log(pokemons)
+                setPokedex(pokemons) //This updates the state, re-render
+                setIsLoading(false) //This causes a re-render too
             })
         })
+    }, []) //Just on mount
 
-        console.log('Billie')
-    }, [options])
+    const indexLastPost = (currentPage + 1) * perPage
+    const indexFirstPost = indexLastPost - perPage
+    const current = pokedex.slice(indexFirstPost, indexLastPost)
+    const pageCount = Math.ceil(pokedex.length / perPage)
+
+    const paginate = page => {
+        console.log(page)
+        setCurrentPage(page.selected)
+    }
 
     return (
         <>
-            {isLoading ? 
-            <img src={Loader} alt="loader" className='loader'/> 
+            { isLoading ? 
+            <img src={loader} alt="loader" className='loader'/> 
             :
             <section className='pokedex'>
                 <Aside />
-                {
-                    pokedex.map(pokemon => (
-                        <Pokemon key={pokemon.id} {...pokemon}/>
-                    ))
-                }
-            </section>
-            }
+                { current.map(pokemon => (
+                    <Pokemon key={pokemon.id} {...pokemon}/>
+                )) }
+            </section> }
 
             <section className='pagination'>
-                {
-                    prevPage &&
-                    <button>
-                        <Link
-                        to={{
-                            pathname: '/',
-                            search: `?${prevPage.split('?')[1]}`
-                        }}>
-                        Prev
-                        </Link>
-                    </button>
-                }
-                {
-                    nextPage &&
-                    <button>
-                        <Link
-                        to={{
-                            pathname: '/',
-                            search: `?${nextPage.split('?')[1]}`
-                        }}>
-                        Next
-                        </Link>
-                    </button>
-                }
+                <ReactPaginate 
+                previousLabel={'prev'}
+                nextLabel={'next'}
+                breakLabel={'...'}
+                pageCount={pageCount}
+                pageRangeDisplayed={5}
+                marginPagesDisplayed={2}
+                onPageChange={paginate}
+
+                />
             </section>
         </>
     )
