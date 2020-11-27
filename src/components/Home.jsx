@@ -7,7 +7,7 @@ import getPokemons from '../utils/getPokemons'
 import ReactPaginate from 'react-paginate'
 
 const Home = () => {
-    const api = 'https://pokeapi.co/api/v2/pokemon?limit=100'
+    const api = 'https://pokeapi.co/api/v2/pokemon?limit=841'
     const [pokedex, setPokedex] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(0)
@@ -51,9 +51,14 @@ const Home = () => {
                 nextLabel={'next'}
                 breakLabel={'...'}
                 pageCount={pageCount}
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={2}
+                pageRangeDisplayed={12}
+                marginPagesDisplayed={3}
                 onPageChange={paginate}
+                pageClassName={'page'}
+                previousClassName={'page'}
+                nextClassName={'page'}
+                pageLinkClassName={'link'}
+                activeLinkClassName={'active'}
 
                 />
             </section>
