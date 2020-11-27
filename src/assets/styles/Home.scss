@@ -1,7 +1,7 @@
 .pokedex {
     width: 90%;
     margin: 20px auto;
-    margin-bottom: 50px;
+    margin-bottom: 45px;
     display: grid;
     gap: 0.5rem;
     grid-template-columns: 1fr;
@@ -31,7 +31,7 @@
 
 .pagination {
     position: fixed;
-    bottom: 10%;
+    bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
