@@ -7,22 +7,32 @@ import getPokemons from '../utils/getPokemons'
 import ReactPaginate from 'react-paginate'
 import Scroll from './Scroll'
 import Footer from './Footer'
+import { connect } from 'react-redux'
+import { setCurrentPage, setAllPokemons } from '../actions/index'
 
-const Home = () => {
+
+const Home = (props) => {
+    const {currentPage, setCurrentPage} = props
+    const {allPokemons, setAllPokemons} = props
     const api = 'https://pokeapi.co/api/v2/pokemon?limit=843'
-    const [pokedex, setPokedex] = useState([])
+    const [pokedex, setPokedex] = useState(allPokemons)
     const [isLoading, setIsLoading] = useState(true)
-    const [currentPage, setCurrentPage] = useState(0)
     const [perPage] = useState(18)
     
 
     useEffect(() => {
-        getData(api).then(data => {
-            getPokemons(data).then(pokemons => {
-                setPokedex(pokemons) //This updates the state, re-render
-                setIsLoading(false) //This causes a re-render too
+        if (allPokemons.length < 1) {
+            getData(api).then(data => {
+                getPokemons(data).then(pokemons => {
+                    setPokedex(pokemons) //This updates the state, re-render
+                    setIsLoading(false) //This causes a re-render too
+                    setAllPokemons(pokemons)
+                })
             })
-        })
+        }
+        setIsLoading(false) //This causes a re-render too
+        
+
     }, []) //Just on mount
 
     const indexLastPost = (currentPage + 1) * perPage
@@ -64,11 +74,23 @@ const Home = () => {
                 pageLinkClassName={'link'}
                 nextLinkClassName={'link'}
                 previousLinkClassName={'link'}
-                activeLinkClassName={'active'}/>
+                activeLinkClassName={'active'}
+                initialPage={currentPage}/>
             </section> }
             <Footer />
         </>
     )
 }
 
-export default Home
+const mapStateToProps = state => {
+    return {
+        currentPage: state.currentPage,
+        allPokemons: state.allPokemons
+    }
+}
+
+const mapDispatchToProps = {
+    setCurrentPage,
+    setAllPokemons
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

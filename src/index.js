@@ -11,6 +11,8 @@ import reducer from './reducers/index.js'
 const capturedPokemons = JSON.parse(window.localStorage.getItem('pokemons'))
 const initialState = {
     myPokemons: capturedPokemons || [],
+    currentPage: 0,
+    allPokemons: [],
     showAside: false
 }
 

@@ -80,7 +80,7 @@ const PokemonDetail = (props) => {
                     }
 
 
-                    <button onClick={() => history.goBack()}
+                    <button onClick={() => history.push('/')}
                     className='back'>
                         Go back
                     </button>
@@ -99,7 +99,8 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     return {
-        myPokemons: state.myPokemons
+        myPokemons: state.myPokemons,
+        currentPage: state.currentPage
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps) (PokemonDetail)

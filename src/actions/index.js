@@ -18,3 +18,17 @@ export function toggleAside(payload) {
         payload
     }
 }
+
+export function setCurrentPage(payload) {
+    return {
+        type: 'set-page',
+        payload
+    }
+}
+
+export function setAllPokemons(payload) {
+    return {
+        type: 'set-all-pokemons',
+        payload
+    }
+}

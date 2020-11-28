@@ -18,6 +18,17 @@ const reducer = (state, action) => {
                 showAside: !state.showAside
 
             }
+        case 'set-page':
+            return {
+                ...state,
+                currentPage: action.payload
+            }
+        case 'set-all-pokemons':
+            return {
+                ...state,
+                allPokemons: action.payload
+
+            }
         default:
             return state
 
