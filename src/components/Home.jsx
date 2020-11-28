@@ -6,6 +6,7 @@ import getData from '../utils/getData'
 import getPokemons from '../utils/getPokemons'
 import ReactPaginate from 'react-paginate'
 import Scroll from './Scroll'
+import Footer from './Footer'
 
 const Home = () => {
     const api = 'https://pokeapi.co/api/v2/pokemon?limit=843'
@@ -43,7 +44,7 @@ const Home = () => {
                 <section className='pokedex'>
                     <Aside />
                     { current.map(pokemon => (
-                        <Pokemon key={pokemon.id} {...pokemon}/>
+                        <Pokemon key={pokemon.id} pokemon={pokemon}/>
                     )) }
                 </section>
             </Scroll>) }
@@ -65,6 +66,7 @@ const Home = () => {
                 previousLinkClassName={'link'}
                 activeLinkClassName={'active'}/>
             </section> }
+            <Footer />
         </>
     )
 }

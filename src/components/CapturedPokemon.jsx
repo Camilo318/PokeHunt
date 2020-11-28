@@ -20,7 +20,7 @@ const CapturedPokemon = (props) => {
         <div className='vault__pokemon'
         style={{backgroundColor: Colors[type]}}>
             <Link to={`/pokemon/${id}`}>
-            <img src={media} alt="" className="vault__image"/>
+            <img src={media} alt={name} className="vault__image"/>
             </Link>
             <div className="remove"
             onClick={() => deleteP(name)}>

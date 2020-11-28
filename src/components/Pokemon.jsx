@@ -2,28 +2,39 @@ import React, { useState }from 'react'
 import { Link } from 'react-router-dom'
 import colors from '../colors.json'
 import loader from '../assets/images/pokemon.svg'
+import { useHistory } from 'react-router-dom'
 
 
-const Pokemon = (props) => {
-    const {name, types} = props
+const Pokemon = ({ pokemon }) => {
+    const {name, types, id} = pokemon
     const nameUpper = name[0].toUpperCase() + name.slice(1)
     
     const color = types[0].type.name
     const [didLoad, setDidLoad] = useState(false)
+    const history = useHistory()
+
+    function showDetails() {
+        history.push({
+            pathname: `/pokemon/${id}`,
+            state: pokemon
+        }) 
+    }
+
     return (
         <div className='pokemon'>
             <div className="pokemon__img"
-            style={{backgroundColor: colors[color] }}>
+            style={{ backgroundColor: colors[color] }}>
+
                 <img src={loader} alt="loader" className='loader'
-                style={{display: didLoad ? 'none' : 'block'}}/> 
-                <Link to={`/pokemon/${props.id}`}>
-                    <img
-                    src={`https://pokeres.bastionbot.org/images/pokemon/${props.id}.png`}
-                    alt={name}
-                    style={{display: didLoad ? 'block' : 'none'}}
-                    onLoad={() => setDidLoad(true)}
-                    />
-                </Link>
+                style={{display: didLoad ? 'none' : 'block'}}/>
+
+                <img
+                src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+                alt={name}
+                style={{display: didLoad ? 'block' : 'none'}}
+                onLoad={() => setDidLoad(true)}
+                onClick={showDetails}/>
+
             </div>
             <h4>{nameUpper}</h4>
         </div>

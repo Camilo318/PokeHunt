@@ -13,7 +13,7 @@ const App = () => {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/pokemon/:id' component={PokemonDetail} />
             </Switch>
-            <Footer/>
+            {/* <Footer/> */}
         </HashRouter>
         
     )
