@@ -76,6 +76,7 @@
             .vault__image {
                 display: block;
                 width: 100%;
+                cursor: pointer;
             }
             &:hover .remove {
                 display: flex;

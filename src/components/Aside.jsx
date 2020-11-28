@@ -24,6 +24,7 @@ const Aside = ({myPokemons, showAside}) => {
                                     media={pokemon.sprites.front_default}
                                     name={pokemon.name}
                                     types={pokemon.types}
+                                    pokemon={pokemon}
                                     />
                                 ))}
                             </>
