@@ -51,7 +51,7 @@ const Home = (props) => {
             <img src={loader} alt="loader" className='loader'/> 
             :
             (<Scroll>
-                <section className='pokedex'>
+                <section className='pokedex' id='pokedex'>
                     <Aside />
                     { current.map(pokemon => (
                         <Pokemon key={pokemon.id} pokemon={pokemon}/>
