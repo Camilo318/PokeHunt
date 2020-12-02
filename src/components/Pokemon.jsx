@@ -1,16 +1,14 @@
-import React, { useState }from 'react'
-import colors from '../colors.json'
+import React, { useState } from 'react'
 import loader from '../assets/images/loader.svg'
 import { useHistory } from 'react-router-dom'
 
 
 const Pokemon = ({ pokemon }) => {
-    const {name, types, id} = pokemon
+    const {name, id} = pokemon
     const nameUpper = name[0].toUpperCase() + name.slice(1)
-    
-    const color = types[0].type.name
     const [didLoad, setDidLoad] = useState(false)
     const history = useHistory()
+    const image = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`
 
     function showDetails() {
         history.push({
@@ -21,14 +19,13 @@ const Pokemon = ({ pokemon }) => {
 
     return (
         <div className='pokemon'>
-            <div className="pokemon__img"
-            style={{ backgroundColor: colors[color] }}>
+            <div className="pokemon__img">
 
                 <img src={loader} alt="loader" className='loader'
                 style={{display: didLoad ? 'none' : 'block'}}/>
 
                 <img
-                src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+                src={image}
                 alt={name}
                 style={{display: didLoad ? 'block' : 'none'}}
                 onLoad={() => setDidLoad(true)}
