@@ -35,7 +35,7 @@ The app performance is not the best, is not bad tho, keep in mind that we are fe
 
 > The pagination works really well, but the initial page load can take quite a long time, even more if you use the app on your phone, which is a boomer since this layout on mobile devices looks terrific. Nonetheless, the team is currently working in a new version, from the ground up.
 
-> The primary goal of this new version is the performance, therefore the implementation of server-side-rendering. We'got high expectations with PokeHunt, we want a fast and awesome experience.
+> The primary goal of this new version is the performance, therefore the implementation of server-side-rendering. We've got high expectations with PokeHunt, we want a fast and awesome experience.
 
 
 

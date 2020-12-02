@@ -5,6 +5,7 @@ import {addPokemon, deletePokemon} from '../actions/index'
 import Aside from './Aside'
 import { useLocation } from 'react-router-dom'
 import { useLocalStorage } from '../utils/useLocalStorage'
+import Footer from './Footer'
 
 const PokemonDetail = (props) => {
     const {addPokemon, deletePokemon, history, match,} = props
@@ -40,54 +41,57 @@ const PokemonDetail = (props) => {
         setStorage(pokemons)
     }
     return (
-        <div className="pokemon-container">
-            <div className='pokemon-detail'>
-                <div className="pokemon-detail__image"
-                style={{backgroundColor: colors[colorType]}}>
+        <>
+            <div className="pokemon-container">
+                <div className='pokemon-detail'>
+                    <div className="pokemon-detail__image"
+                    style={{backgroundColor: colors[colorType]}}>
 
-                    <img
-                    src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
-                    alt={name}
-                    onLoad={() => console.log('Loading Image')}
-                    />
-                </div>
+                        <img
+                        src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+                        alt={name}
+                        onLoad={() => console.log('Loading Image')}
+                        />
+                    </div>
 
-                <div className="pokemon-detail__info">
-                    <h3>{capitalize(name)} {id.padStart(3,0)}</h3>
-                    <p>Height: {height/10}m</p>
-                    <p>Weight: {weight/10}kg</p>
-                    <p>Base Experience: {base_experience}</p>
+                    <div className="pokemon-detail__info">
+                        <h3>{capitalize(name)} {id.padStart(3,0)}</h3>
+                        <p>Height: {height/10}m</p>
+                        <p>Weight: {weight/10}kg</p>
+                        <p>Base Experience: {base_experience}</p>
 
 
-                    <p className='types'>Types:
-                        { types.map(type => (
-                            <span key={type.type.name}>
-                                {`#${type.type.name}`}
-                            </span>
-                        ))}
-                    </p>
-                    
-                    {   duplicate ?
-                        <button
-                        onClick={() => deleteP(name)}className='delete'>
-                            Delete Pokemon
+                        <p className='types'>Types:
+                            { types.map(type => (
+                                <span key={type.type.name}>
+                                    {`#${type.type.name}`}
+                                </span>
+                            ))}
+                        </p>
+                        
+                        {   duplicate ?
+                            <button
+                            onClick={() => deleteP(name)}className='delete'>
+                                Delete Pokemon
+                            </button>
+                            :
+                            <button
+                            onClick={() => add(location.state)} className='add'>
+                                Add Pokemon
+                            </button>
+                        }
+
+
+                        <button onClick={() => history.push('/')}
+                        className='back'>
+                            Go back
                         </button>
-                        :
-                        <button
-                        onClick={() => add(location.state)} className='add'>
-                            Add Pokemon
-                        </button>
-                    }
-
-
-                    <button onClick={() => history.push('/')}
-                    className='back'>
-                        Go back
-                    </button>
+                    </div>
                 </div>
+                <Aside />
             </div>
-            <Aside />
-        </div>
+            <Footer />
+        </>
     )
 }
 

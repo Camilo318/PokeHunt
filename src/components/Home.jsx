@@ -6,7 +6,6 @@ import getData from '../utils/getData'
 import getPokemons from '../utils/getPokemons'
 import ReactPaginate from 'react-paginate'
 import Scroll from './Scroll'
-import Footer from './Footer'
 import { connect } from 'react-redux'
 import { setCurrentPage, setAllPokemons } from '../actions/index'
 
@@ -77,7 +76,6 @@ const Home = (props) => {
                 activeLinkClassName={'active'}
                 initialPage={currentPage}/>
             </section> }
-            <Footer />
         </>
     )
 }
