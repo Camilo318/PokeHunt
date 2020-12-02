@@ -1,13 +1,12 @@
-const getPokemons = async (data) => {
-    const pokemons = []
-    data.results.forEach(p => {
-        const pokemon = fetch(p.url).then(res => res.json())
-        pokemons.push(pokemon)
-    })
+const getPokemons = async data => {
+    const { results } = data
+    const pokemons = await Promise.all(results.map(async result => {
+        const response = await fetch(result.url)
+        const data = await response.json()
+        return data
+    }))
 
-    const resolvedPokemons = await Promise.all(pokemons)
-
-    return resolvedPokemons
+    return pokemons
 }
 
 export default getPokemons

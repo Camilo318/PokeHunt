@@ -20,18 +20,20 @@ const Home = (props) => {
     
 
     useEffect(() => {
-        if (allPokemons.length < 1) {
-            getData(api).then(data => {
-                getPokemons(data).then(pokemons => {
-                    setPokedex(pokemons) //This updates the state, re-render
-                    setIsLoading(false) //This causes a re-render too
-                    setAllPokemons(pokemons)
-                })
-            })
+        async function getPokeInfo() {
+            if (allPokemons.length < 1) {
+                const data = await getData(api)
+                const pokemons = await getPokemons(data)
+                setPokedex(pokemons) //This updates the state, re-render
+                setAllPokemons(pokemons)
+                setIsLoading(false) //This causes a re-render too
+            }
+            else {
+                setIsLoading(false) //This causes a re-render too
+            }
         }
-        setIsLoading(false) //This causes a re-render too
+        getPokeInfo()
         
-
     }, []) //Just on mount
 
     const indexLastPost = (currentPage + 1) * perPage
