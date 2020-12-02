@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Pokemon from './Pokemon'
 import Aside from './Aside'
-import loader from '../assets/images/pokemon.svg'
 import getData from '../utils/getData'
 import getPokemons from '../utils/getPokemons'
 import ReactPaginate from 'react-paginate'
@@ -49,7 +48,9 @@ const Home = (props) => {
     return (
         <>
             { isLoading ? 
-            <img src={loader} alt="loader" className='loader'/> 
+            <h2 style={{textAlign: "center"}}>
+                Loading...
+            </h2>
             :
             (<Scroll>
                 <section className='pokedex' id='pokedex'>

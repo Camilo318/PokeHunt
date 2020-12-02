@@ -1,7 +1,6 @@
 import React, { useState }from 'react'
-import { Link } from 'react-router-dom'
 import colors from '../colors.json'
-import loader from '../assets/images/pokemon.svg'
+import loader from '../assets/images/loader.svg'
 import { useHistory } from 'react-router-dom'
 
 
