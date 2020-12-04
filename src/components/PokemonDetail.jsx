@@ -40,6 +40,7 @@ const PokemonDetail = (props) => {
             pokemon.name !== payload))
         setStorage(pokemons)
     }
+    const source = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`
     return (
         <>
             <div className="pokemon-container">
@@ -48,7 +49,7 @@ const PokemonDetail = (props) => {
                     style={{backgroundColor: colors[colorType]}}>
 
                         <img
-                        src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+                        src={source}
                         alt={name}
                         onLoad={() => console.log('Loading Image')}
                         />

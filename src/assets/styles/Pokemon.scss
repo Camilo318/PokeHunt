@@ -1,11 +1,12 @@
 .pokemon {
-    border-radius: 10px;
+    border-radius: 7px;
     padding: 10px;
     text-align: center;
     background-color: #fafafa;
     transition: all 0.3s;
     .pokemon__img {
         border-radius: inherit;
+        background-color: #ddf3f5;
         img {
             width: 100%;
             height: auto;
