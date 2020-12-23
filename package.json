@@ -8,6 +8,12 @@
     "build": "webpack -p",
     "bundle-report": "webpack-bundle-analyzer --port 4200"
   },
+
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./src/__test__/setupTest.js"
+    ]
+  },
   "keywords": [],
   "author": "Camilo Perilla <camiloa0318@gmail.com>",
   "license": "MIT",
@@ -39,6 +45,10 @@
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
     "babel-polyfill": "^6.26.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
+    "jest": "^26.6.3",
     "webpack-bundle-analyzer": "^3.9.0"
   }
 }
