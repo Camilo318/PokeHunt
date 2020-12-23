@@ -1,3 +1,5 @@
+import 'cross-fetch/polyfill'
+
 const getPokemons = async data => {
     const { results } = data
     const pokemons = await Promise.all(results.map(async result => {
