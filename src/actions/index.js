@@ -1,3 +1,6 @@
+import getData from '../utils/getData'
+import getPokemons from '../utils/getPokemons'
+
 export function addPokemon(payload) {
     return { //action
         type: 'pokemon/addPokemon',
@@ -30,5 +33,14 @@ export function setAllPokemons(payload) {
     return {
         type: 'set-all-pokemons',
         payload
+    }
+}
+
+export const fetchPokemons = (api) => {
+    //thunk action creator
+    return async function fetchPokemonsThunk(dispatch, getState) {
+        const data = await getData(api)
+        const pokemons = await getPokemons(data)
+        dispatch(setAllPokemons(pokemons))
     }
 }

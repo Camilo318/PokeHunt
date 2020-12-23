@@ -1,47 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import Pokemon from './Pokemon'
 import Aside from './Aside'
-import getData from '../utils/getData'
-import getPokemons from '../utils/getPokemons'
 import ReactPaginate from 'react-paginate'
 import Scroll from './Scroll'
 import { connect } from 'react-redux'
-import { setCurrentPage, setAllPokemons } from '../actions/index'
+import { setCurrentPage, fetchPokemons } from '../actions/index'
 
+const api = 'https://pokeapi.co/api/v2/pokemon?limit=843'
 
 const Home = (props) => {
-    const {currentPage, setCurrentPage} = props
-    const {allPokemons, setAllPokemons} = props
-    const api = 'https://pokeapi.co/api/v2/pokemon?limit=843'
-    const [pokedex, setPokedex] = useState(allPokemons)
+
+    const { currentPage, setCurrentPage } = props
+    const { allPokemons, fetchPokemons } = props
     const [isLoading, setIsLoading] = useState(true)
     const [perPage] = useState(18)
     
 
     useEffect(() => {
-        async function getPokeInfo() {
-            if (allPokemons.length < 1) {
-                const data = await getData(api)
-                const pokemons = await getPokemons(data)
-                setPokedex(pokemons) //This updates the state, re-render
-                setAllPokemons(pokemons)
-                setIsLoading(false) //This causes a re-render too
+        async function loadPokemons() {
+            if (allPokemons.length === 0) {
+                await fetchPokemons(api)
+                setIsLoading(false)
             }
-            else {
-                setIsLoading(false) //This causes a re-render too
-            }
+            setIsLoading(false)
         }
-        getPokeInfo()
-        
+        loadPokemons()
     }, []) //Just on mount
 
     const indexLastPost = (currentPage + 1) * perPage
     const indexFirstPost = indexLastPost - perPage
-    const current = pokedex.slice(indexFirstPost, indexLastPost)
-    const pageCount = Math.ceil(pokedex.length / perPage)
+    const current = allPokemons.slice(indexFirstPost, indexLastPost)
+    const pageCount = Math.ceil(allPokemons.length / perPage)
 
     const paginate = page => {
-        console.log(page)
         setCurrentPage(page.selected)
     }
 
@@ -92,6 +83,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     setCurrentPage,
-    setAllPokemons
+    fetchPokemons
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
