@@ -1,7 +1,10 @@
 const reducer = (state, action) => {
     switch (action.type) {
         case 'pokemon/addPokemon':
-            const duplicate = state.myPokemons.find(pokemon => pokemon.name === action.payload.name)
+            const duplicate = state.myPokemons.find(pokemon =>
+                (pokemon.name === action.payload.name)
+            )
+            
             return duplicate ? state :
             {
                 ...state,
@@ -10,7 +13,9 @@ const reducer = (state, action) => {
         case 'pokemon/deletePokemon':
             return {
                 ...state,
-                myPokemons: state.myPokemons.filter(pokemon => pokemon.name !== action.payload)
+                myPokemons: state.myPokemons.filter(pokemon =>
+                    (pokemon.name !== action.payload)
+                )
             }
         case 'aside/toggleAside':
             return {
