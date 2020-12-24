@@ -1,8 +1,8 @@
 import * as actions from '../actions/index'
-import thunkMiddleware from 'redux-thunk'
+import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 
-const mockStore = configureMockStore([thunkMiddleware])
+const mockStore = configureMockStore([thunk])
 
 
 describe('Testing actions creator', () => {
@@ -22,5 +22,29 @@ describe('Testing actions creator', () => {
             payload
         }
         expect(actions.setCurrentPage(payload)).toEqual(expected)
-    })    
+    })
+
+
+    test('should run thunk and dispatch', async () => {
+        expect.assertions(2)
+        const store = mockStore()
+        const mockFetch = jest.fn()
+            .mockResolvedValueOnce('Billie')
+            .mockResolvedValueOnce('Eilish')
+
+        await store.dispatch(actions.fetchPokemons(
+            'Billie',
+            mockFetch,
+            mockFetch
+        ))
+        const [action] = store.getActions()
+        console.log(action)
+        const expected = {
+            type: 'set-all-pokemons',
+            payload: 'Eilish'
+        }
+        expect(action).toEqual(expected)
+        expect(mockFetch.mock.calls.length).toBe(2)
+    })
+    
 })

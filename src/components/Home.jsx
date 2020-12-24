@@ -5,6 +5,8 @@ import ReactPaginate from 'react-paginate'
 import Scroll from './Scroll'
 import { connect } from 'react-redux'
 import { setCurrentPage, fetchPokemons } from '../actions/index'
+import getData from '../utils/getData'
+import getPokemons from '../utils/getPokemons'
 
 const api = 'https://pokeapi.co/api/v2/pokemon?limit=843'
 
@@ -19,7 +21,7 @@ const Home = (props) => {
     useEffect(() => {
         async function loadPokemons() {
             if (allPokemons.length === 0) {
-                await fetchPokemons(api)
+                await fetchPokemons(api, getData, getPokemons)
                 setIsLoading(false)
             }
             setIsLoading(false)
