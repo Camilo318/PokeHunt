@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import colors from '../colors.json'
 import { connect } from 'react-redux'
 import {deletePokemon} from '../actions/index'
