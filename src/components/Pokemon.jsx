@@ -21,8 +21,13 @@ const Pokemon = ({ pokemon }) => {
         <div className='pokemon'>
             <div className="pokemon__img">
 
-                <img src={loader} alt="loader" className='loader'
-                style={{display: didLoad ? 'none' : 'block'}}/>
+                <img
+                src={loader}
+                alt="loader"
+                className='loader'
+                style={
+                    {display: didLoad ? 'none' : 'block'}
+                }/>
 
                 <img
                 src={image}

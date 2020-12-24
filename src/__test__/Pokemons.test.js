@@ -1,11 +1,13 @@
 import Pokemon from '../components/Pokemon'
-import { shallow } from 'enzyme'
+import { fireEvent, render } from '@testing-library/react'
 
 
 describe('Testing snapshots', () => {
     test('should render without crashing', () => {
-        const wrapper = shallow(<Pokemon />)
-        expect(wrapper).toMatchSnapshot()
+        const mockShowDetails = jes.fn()
+        render(<Pokemon />)
+        fireEvent.click(<Pokemon />)
+
+        expect(mockShowDetails).toHaveBeenCalled(1)
     })
-    
 })
